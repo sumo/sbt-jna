@@ -1,0 +1,10 @@
+<ivysettings>
+  <settings defaultResolver="chain"/>
+  <resolvers>
+	<chain name="chain" returnFirst="true" dual="true">
+      <ibiblio name="JNAerator Maven Repository" root="http://jnaerator.sourceforge.net/maven" m2compatible="true" checkconsistency="false"/>
+	  <ibiblio name="NativeLibs4Java" root="http://nativelibs4java.sourceforge.net/maven" m2compatible="true"/>
+	  <ibiblio name="Java.net Repository for Maven" root="http://download.java.net/maven/2" m2compatible="true"/>
+	</chain>
+   </resolvers>
+</ivysettings>
