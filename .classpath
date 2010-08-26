@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.scala" kind="src" output="target/scala_2.7.7/test-classes" path="src/test/scala"/>
+	<classpathentry including="**/*.scala" kind="src" path="src/main/scala"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jna-3.2.4.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/ochafik-util-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jnaerator-rococoa-runtime-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/bridj-0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/ochafik-swing-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jna-jnaerator-3.2.4.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/stringtemplate-3.2.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jnaerator-runtime-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/junit-4.7.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jnaerator-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/antlr-runtime-3.1.3.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/anarres-cpp-jnaerator-1.2.5-JNAerator.3.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/rococoa-core-0.5.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/core-3.5.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/slf4j-jdk14-1.5.8.jar"/>
+	<classpathentry kind="lib" path="lib_managed/scala_2.7.7/compile/jnaerator-parser-0.9.4-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.4/sbt_2.7.7-0.7.4.jar"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="target/scala_2.7.7/classes"/>
+</classpath>
