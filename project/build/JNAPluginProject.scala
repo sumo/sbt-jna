@@ -1,6 +1,13 @@
 import sbt._
 import de.element34.sbteclipsify._
 class JNAPluginProject(info: ProjectInfo) extends PluginProject(info) with Eclipsify {
+
+  val jnaeratorRepo = "JNAerator Maven Repository" at "http://jnaerator.sourceforge.net/maven"
+  val nl4jRepo = "NativeLibs4Java" at "http://nativelibs4java.sourceforge.net/maven"
+  val javaNetRepo = "Java.net Repository for Maven" at "http://download.java.net/maven/2"
+  
+  override def compileOrder = CompileOrder.JavaThenScala
+  
   val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.4"
   override lazy val includePlugin = propertyOptional[Boolean](true)
   override lazy val includeProject = propertyOptional[Boolean](true)
