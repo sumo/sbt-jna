@@ -9,6 +9,6 @@ class JNAPluginProject(info: ProjectInfo) extends PluginProject(info) with Eclip
   override def compileOrder = CompileOrder.JavaThenScala
   
   val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.4"
-  override lazy val includePlugin = propertyOptional[Boolean](true)
-  override lazy val includeProject = propertyOptional[Boolean](true)
+  
+  val publishTo = Resolver.file("sumo.github.com", new java.io.File("../sumo.github.com/maven/"))
 }

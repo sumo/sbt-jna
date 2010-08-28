@@ -1,0 +1,25 @@
+A plugin for the Scala "simple-build-tool":http://code.google.com/p/simple-build-tool/ to create JNA mappings using "JNAerator":http://code.google.com/p/jnaerator/
+
+h2. Plugin Usage
+
+1. In your project/plugins/MyJNAProjectPlugins.scala:
+
+<pre>
+import sbt._
+class MyJNAProjectPlugins(info: ProjectInfo) extends PluginDefinition(info) {
+  val sumogitHub = "sumo.github.com" at "http://sumo.github.com/maven"
+  val jna = "raja-consulting.co.uk" % "sbt-jna-plugin" % "1.0"
+}
+</pre>
+
+2. In your project definition file:
+
+<pre>
+import sbt._
+class MyJNAProjectProject(info: ProjectInfo) extends DefaultProject(info) with JNAeratorProject{
+	override val library = "<your library name here>"
+	override def includePaths = List("<any additional")
+}
+</pre>
+
+This has not been tested in a multi-module project. Let me know how you get on!
