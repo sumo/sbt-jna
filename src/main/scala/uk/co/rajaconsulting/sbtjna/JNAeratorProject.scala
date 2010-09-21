@@ -1,7 +1,6 @@
 package uk.co.rajaconsulting.sbtjna
 
 import sbt._
-import com.ochafik.lang.jnaerator._
 import java.io._
 
 /**
@@ -31,22 +30,8 @@ trait JNAeratorProject extends DefaultProject {
 
   // project.info.parent for subproject to parent relation
   lazy val jnaerate = task {
-    var args = List("-noComp", "-o", javaOutputDir)
-    if (scalaOut) {
-      args = args ::: List("-scalaOut", scalaOutputDir)
-    }
-    if (verbose) {
-    	args = "-v" :: args
-    }
-    libraries.foreach((element)  => {
-    	val hfs = element._2.map(
-    		header=> new File(headerRootDir + "/" + header).getAbsolutePath);
-    	args = args ::: List("-library", element._1)
-    	args = args ::: hfs
-    })
-    log.info("JNAerating headers with options " + args + ".....")
-    JNAerator.main(args.toArray);
+    new JNAerator(javaOutputDir, headerRootDir, scalaOutputDir, scalaOut, verbose, includePaths, frameworkPaths, libraries)
     None
-  } describedAs ("Generate Java And Scala JNA wrappers for native code")
+  } describedAs ("Generate Java and Scala JNA wrappers for native code")
 
 }
