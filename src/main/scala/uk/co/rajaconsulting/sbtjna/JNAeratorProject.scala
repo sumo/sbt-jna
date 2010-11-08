@@ -14,6 +14,16 @@ import java.io._
  */
 trait JNAeratorProject extends DefaultProject {
 
+  val jnaeratorRepo = "JNAerator Maven Repository" at "http://jnaerator.sourceforge.net/maven"
+  val nl4jRepo = "NativeLibs4Java" at "http://nativelibs4java.sourceforge.net/maven"
+  val javaNetRepo = "Java.net Repository for Maven" at "http://download.java.net/maven/2"
+  
+  override def compileOrder = CompileOrder.JavaThenScala
+  
+  val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.5"
+  val junit = "junit" % "junit" % "4.8.1" % "test"
+  val scalatest = "org.scalatest" % "scalatest" % "1.1" % "test"
+
   lazy val javaOutputDir = "target/generated-sources/java"
   lazy val scalaOutputDir = "target/generated-sources/scala"
   lazy val scalaOut = false
