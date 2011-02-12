@@ -7,7 +7,7 @@ h2. Plugin Usage
 <pre>
 import sbt._
 class MyJNAProjectPlugins(info: ProjectInfo) extends PluginDefinition(info) {
-  val sumogitHub = "sumo.github.com" at "http://sumo.github.com/maven"
+  val sumogitHub = "sumo.github.com" at "http://sumo.github.com/"
   val jna = "raja-consulting.co.uk" % "sbt-jna-plugin" % "1.0"
 }
 </pre>
