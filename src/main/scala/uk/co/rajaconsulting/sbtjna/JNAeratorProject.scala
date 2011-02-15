@@ -20,7 +20,7 @@ trait JNAeratorProject extends DefaultProject {
   
   override def compileOrder = CompileOrder.JavaThenScala
   
-  val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.5"
+  val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.6"
 
   lazy val javaOutputDir = "target/generated-sources/java"
   lazy val scalaOutputDir = "target/generated-sources/scala"
