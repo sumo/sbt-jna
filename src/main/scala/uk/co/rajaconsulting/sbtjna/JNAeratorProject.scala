@@ -28,7 +28,7 @@ trait JNAeratorProject extends DefaultProject {
   lazy val verbose = false
   lazy val headerRootDir = "src/main/headers"
   /** (Library name, headers offset from headerRootDir) **/
-  def libraries: Map[String, List[String]]
+  def libraries: List[(String, List[String])]
 
   override def mainSourceRoots = super.mainSourceRoots +++ (Path.fromFile(javaOutputDir)) +++ (Path.fromFile(scalaOutputDir)) ##
 

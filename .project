@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <projectDescription>
   <name>SBT JNA Plugin</name>
-  <comment>SBT JNA Plugin 1.0</comment>
+  <comment>SBT JNA Plugin 0.3</comment>
   <projects></projects>
   <buildSpec>
     <buildCommand>

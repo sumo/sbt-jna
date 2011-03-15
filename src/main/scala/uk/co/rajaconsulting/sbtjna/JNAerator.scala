@@ -3,7 +3,7 @@ import com.ochafik.lang.jnaerator._
 import java.io._
 
 class JNAerator(javaOutputDir:String, headerRootDir:String, scalaOutputDir:String, scalaOut:Boolean, verbose:Boolean, includePaths: List[String], 
-                frameworkPaths: List[String], libraries: Map[String, List[String]]) {
+                frameworkPaths: List[String], libraries: List[(String, List[String])]) {
   var args = List("-noComp", "-o", javaOutputDir)
   if (scalaOut) {
     args = args ::: List("-scalaOut", scalaOutputDir)
