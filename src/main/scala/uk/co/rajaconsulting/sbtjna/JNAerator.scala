@@ -2,11 +2,11 @@ package uk.co.rajaconsulting.sbtjna
 import com.ochafik.lang.jnaerator._
 import java.io._
 
-class JNAerator(javaOutputDir: String, headerRootDir: String, scalaOutputDir: String, scalaOut: Boolean, verbose: Boolean, includePaths: List[String],
+class JNAerator(javaOutputDir: String, headerRootDir: String, scalaOutputDir: String, rootPackage : String, scalaOut: Boolean, verbose: Boolean, includePaths: List[String],
   frameworkPaths: List[String], libraries: List[(String, List[String])], reification: Boolean, scalaStructSetters: Boolean, nocpp: Boolean,
   noJar: Boolean, noComp: Boolean, runtime: JNAeratorRuntime.Value) {
 
-  var args = List("-noComp", "-o", javaOutputDir)
+  var args = List("-o", javaOutputDir)
   if (scalaOut) {
     args = args ::: List("-scalaOut", scalaOutputDir)
   }
@@ -14,11 +14,11 @@ class JNAerator(javaOutputDir: String, headerRootDir: String, scalaOutputDir: St
     args = "-v" :: args
   }
 
-  args = args ::: includePaths.flatMap(List("-I", _))
-  args = args ::: frameworkPaths.flatMap(List("-F", _))
+  args = args ::: includePaths.flatMap( x => List("-I", new File(x).getAbsolutePath))
+  args = args ::: frameworkPaths.flatMap(x => List("-F", new File(x).getAbsolutePath))
   libraries.foreach((element) => {
     val hfs = element._2.map(
-      header => new File(headerRootDir + "/" + header).getAbsolutePath);
+      header => new File(headerRootDir + "/" + header).getAbsolutePath)
     args = args ::: List("-library", element._1)
     args = args ::: hfs
   })
@@ -36,6 +36,9 @@ class JNAerator(javaOutputDir: String, headerRootDir: String, scalaOutputDir: St
   }
   if (noComp) {
     args = "-noComp" :: args
+  }
+  if(rootPackage != null) {
+	  args = "-root" :: rootPackage :: args
   }
   if (runtime != JNAeratorRuntime.JNAerator) {
     args = "-runtime" :: JNAeratorRuntime.runtimeName(runtime) :: args

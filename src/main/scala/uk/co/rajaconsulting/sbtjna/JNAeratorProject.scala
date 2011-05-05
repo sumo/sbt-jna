@@ -20,11 +20,11 @@ trait JNAeratorProject extends DefaultProject {
 
   override def compileOrder = CompileOrder.JavaThenScala
 
-  val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.6"
+  val jnaerator = "com.jnaerator" % "jnaerator" % "0.9.7"
 
   lazy val javaOutputDir = "target/generated-sources/java"
   lazy val scalaOutputDir = "target/generated-sources/scala"
-  lazy val scalaOut = true
+  lazy val scalaOut = false
   lazy val verbose = false
   lazy val reification = true
   lazy val scalaStructSetters = true
@@ -33,6 +33,7 @@ trait JNAeratorProject extends DefaultProject {
   lazy val noComp = true
   lazy val runtime = JNAeratorRuntime.JNAerator
   lazy val headerRootDir = "src/main/headers"
+  lazy val rootPackage = null
   /** (Library name, headers offset from headerRootDir) **/
   def libraries: List[(String, List[String])]
 
@@ -44,9 +45,9 @@ trait JNAeratorProject extends DefaultProject {
 
   // project.info.parent for subproject to parent relation
   lazy val jnaerate = task {
-    cleanTask(javaOutputDir)
-    cleanTask(scalaOutputDir)
-    new JNAerator(javaOutputDir, headerRootDir, scalaOutputDir, scalaOut, verbose, includePaths, frameworkPaths, libraries,
+    cleanTask(Path.fromFile(javaOutputDir))
+    cleanTask(Path.fromFile(scalaOutputDir))
+    new JNAerator(javaOutputDir, headerRootDir, scalaOutputDir, rootPackage, scalaOut, verbose, includePaths, frameworkPaths, libraries,
       reification, scalaStructSetters, nocpp, noJar, noComp, runtime)
     None
   } describedAs ("Generate Java and Scala JNA wrappers for native code")
