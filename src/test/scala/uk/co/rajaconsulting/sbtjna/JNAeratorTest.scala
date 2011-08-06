@@ -15,7 +15,7 @@ class JNAeratorTest extends JUnitSuite {
   @Test 
   def testJNAerate() {
     new JNAerator("target/generated-sources/java", "src/test/headers", "target/generated-sources/scala", null, true, true, List("/opt/local/include"),
-                  Nil, List(("simple", List("simple.h"))), true, true, true, true, true, JNAeratorRuntime.BridJ)
+                  Nil, Map("simple" -> ("", List("simple.h"))), true, true, true, true, true, JNAeratorRuntime.BridJ)
     checkFile("target/generated-sources/java/simple/Pair.java")
     checkFile("target/generated-sources/java/simple/BiggerStruct.java")
     checkFile("target/generated-sources/java/simple/SimpleLibrary.java")

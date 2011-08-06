@@ -32,10 +32,19 @@ trait JNAeratorProject extends DefaultProject {
   lazy val noJar = true
   lazy val noComp = true
   lazy val runtime = JNAeratorRuntime.JNAerator
-  lazy val headerRootDir = "src/main/headers"
+
+  /** The base directory for all libraries. Set to null if the libraries do not have interdependant headers to prevent **/
+  lazy val defaultHeaderRootDir = "src/main/headers"
+
   lazy val rootPackage = null
-  /** (Library name, headers offset from headerRootDir) **/
-  def libraries: List[(String, List[String])]
+  
+  /**
+   * LibraryName -> (dirName for header or "" if not needed, list of header files")
+   * e.g. "avformat" ->("avformat", List("../avutil/avutil.h","avformat.h")
+   * Why? In case the headers depend of other headers in the source tree 
+   * *
+   */
+  def libraries: Map[String, (String, List[String])]
 
   override def mainSourceRoots = super.mainSourceRoots +++ (Path.fromFile(javaOutputDir)) +++ (Path.fromFile(scalaOutputDir)) ##
 
@@ -47,7 +56,7 @@ trait JNAeratorProject extends DefaultProject {
   lazy val jnaerate = task {
     cleanTask(Path.fromFile(javaOutputDir))
     cleanTask(Path.fromFile(scalaOutputDir))
-    new JNAerator(javaOutputDir, headerRootDir, scalaOutputDir, rootPackage, scalaOut, verbose, includePaths, frameworkPaths, libraries,
+    new JNAerator(javaOutputDir, defaultHeaderRootDir, scalaOutputDir, rootPackage, scalaOut, verbose, includePaths, frameworkPaths, libraries,
       reification, scalaStructSetters, nocpp, noJar, noComp, runtime)
     None
   } describedAs ("Generate Java and Scala JNA wrappers for native code")
